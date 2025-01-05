@@ -9,6 +9,10 @@ export default {
   ],
   theme: {
   	extend: {
+			fontFamily: {
+        zentry: ["zentry", "sans-serif"],
+        general: ["general", "sans-serif"],
+      },
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',

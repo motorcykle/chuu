@@ -9,6 +9,16 @@ body {
 
 
 @layer base {
+  @font-face {
+    font-family: "zentry";
+    src: url("/fonts/zentry-regular.woff2") format("woff2");
+  }
+
+  @font-face {
+    font-family: "general";
+    src: url("/fonts/general.woff2") format("woff2");
+  }
+
   :root {
     --background: 0 0% 100%;
     --foreground: 224 71.4% 4.1%;
