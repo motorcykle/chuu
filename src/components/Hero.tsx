@@ -1,6 +1,7 @@
 import { BsLightning, BsLightningFill, BsThunderbolt, BsThunderboltFill } from "react-icons/bs";
 import { Button } from "./ui/button";
 import { SendIcon } from "lucide-react";
+import Link from "next/link";
 
 export default function Hero () {
   return <section>
@@ -15,7 +16,9 @@ export default function Hero () {
             Få din bil synlig på nolltid! Med vår tjänst skapar vi en professionell annons åt dig – du behöver bara skicka oss bilder, registreringsnummer och miltal. Vi ser till att din bil presenteras på bästa möjliga sätt.
           </p>
 
-          <Button size={"lg"} className="text-xs font-general uppercase">Skapa annons <SendIcon className="inline-block" /></Button>
+          <Link href={"/create-ad"} className="block" >
+            <Button size={"lg"} className="text-xs font-general uppercase">Skapa annons <SendIcon className="inline-block" /></Button>
+          </Link>
         </div>
       </section>
       <section></section>
