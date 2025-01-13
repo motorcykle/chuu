@@ -2,8 +2,10 @@ import { BsLightning, BsLightningFill, BsThunderbolt, BsThunderboltFill } from "
 import { Button } from "./ui/button";
 import { SendIcon } from "lucide-react";
 import Link from "next/link";
+import { getCarPageHTML } from "@/lib/puppeteer";
 
-export default function Hero () {
+export default async function Hero () {
+
   return <section>
     <div className="max-w-6xl mx-auto px-2 md:px-0 py-10">
       <section className="space-y-8 relative">

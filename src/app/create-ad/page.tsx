@@ -8,8 +8,10 @@ import { Label } from "@/components/ui/label";
 import { GiThorHammer } from "react-icons/gi";
 import { useChatGPT } from "@/lib/actions";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Page() {
+  const router = useRouter();
   const [exteriorCondition, setExteriorCondition] = useState("");
   const [interiorCondition, setInteriorCondition] = useState("");
 
@@ -22,6 +24,8 @@ export default function Page() {
     formData.set('toggle-interior', interiorCondition);
 
     const res = await useChatGPT(formData);
+    sessionStorage.setItem('data', JSON.stringify(res));
+    router.push(`/ad`)
     console.log(res)
   };
 

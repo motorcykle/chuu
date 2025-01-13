@@ -3,6 +3,7 @@
 
 import { redirect } from "next/navigation";
 import OpenAI from "openai";
+import { getCarPageHTML } from "./puppeteer";
 
 const openai = new OpenAI();
 
@@ -22,7 +23,6 @@ export async function useChatGPT(formData: FormData) {
 
     console.log({
       registrationNumber,
-      carModel,
       mileage,
       extraEquipment,
       exteriorCondition,
@@ -32,11 +32,15 @@ export async function useChatGPT(formData: FormData) {
       kommun
     });
 
+    const carInfo = await getCarPageHTML(registrationNumber)
+
     const prompt = `
       Write a detailed car ad with price and information about the car. 
       Here's the info: 
       - Registration Number: ${registrationNumber}
-      - Car Model: ${carModel}
+      - summary: ${carInfo.summary}
+      - vehicleData: ${carInfo.vehicleData}
+      - technicalData: ${carInfo.technicalData}
       - Mileage: ${mileage}
       - Extra Equipment: ${extraEquipment}
       - Exterior Condition: ${exteriorCondition}
@@ -100,26 +104,6 @@ MomentumVolvo On CallParkeringsvärmareParkeringssensorer fram & bakSkinn/Tygkl�
 Beskrivning
 Riddermark Bil har Sveriges NÖJDASTE kunder enligt Trustpilot
 *DTY15F* *Vi tar emot alla inbyten och erbjuder hemleverans i hela Sverige!*
-
-Varmt välkommen till våran anläggning i Halmstad!
-
-Riddermark Bil Halmstad - din destination för ett smidigt bilköp! Vi erbjuder ett brett utbud av kvalitetsbilar som är noggrant genomgångna och en enastående service. Besök oss på Skyttevägen 23 och upplev skillnaden! Vi hjälper dig hitta rätt bil till rätt pris.
-
-Leverans av din nya bil direkt till din dörr inom 24 timmar! Vi tar även hand om ditt inbyte. Vill du se mer? Kontakta oss för fler bilder och videor.
-
-Kontakta oss för mer information: 
-Telefon: 035-240 06 00
-Mail: halmstad@riddermarkbil.se
-Adress: Skyttevägen 23, 302 44, Halmstad
-
-Därför ska du välja Riddermark Bil: 
-* Störst i Sverige på begagnade bilar
-* Erbjuder hemleverans i hela Sverige
-* 14 dagars helförsäkring via Folksam
-* Över 10 tusen omdömen på Trustpilot 
-* Våra bilar är testade på över 100 punkter
-* Kvalitetssäkrade bilar
-
 Utrustning inkluderar:
   . Momentum
   . Volvo On Call & Parkeringsvärmare
